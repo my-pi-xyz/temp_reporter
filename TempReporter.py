@@ -101,7 +101,7 @@ def loop():
             if report_in_fahrenheit:
                 line_1 = 'Min Temp : {0:0.1f}F'.format(to_fahrenheit(min_temperature))
             else:
-                line_1 = 'Min Temp :  {0:0.1f}C'.format(min_temperature)
+                line_1 = 'Min Temp : {0:0.1f}C'.format(min_temperature)
             line_2 = 'Min Hum  : {0:0.1f}%'.format(min_humidity)
 
             next_display = 1  # Show current values
