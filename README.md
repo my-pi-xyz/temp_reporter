@@ -1,6 +1,8 @@
 # temp_reporter
 Reports current temp and hum on an LCD
 
+![Alt text](TempReporter.png?raw=true)
+
 To use this code you will need to install Adafruit_Python_DHT
 
 You can use these steps to install the required library:
