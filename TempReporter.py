@@ -53,26 +53,32 @@ def destroy():
 def loop():
     global report_in_fahrenheit
 
+	# Set dummy values to ensre that stats
+	# are updated on starting
     max_temperature = 0
-    min_temperature = 0
+    min_temperature = 1000
     max_humidity = 0
-    min_humidity = 0
+    min_humidity = 1000
 
-    next_display = 1  # Show current values
-
+    next_display = 1  # Show current values, first time
+	
     while True:
         # Take reading
         current_humidity, current_temperature = Adafruit_DHT.read_retry(11, 4)
 
+        # If the humidity reading is out of range we will do it again!
+        while (current_humidity < 20) or (current_humidity > 80):
+			current_humidity, current_temperature = Adafruit_DHT.read_retry(11, 4)
+
         # Record min/max stats
         if current_temperature > max_temperature:
             max_temperature = current_temperature
-        if min_temperature < current_temperature:
+        if current_temperature < min_temperature:
             min_temperature = current_temperature
 
         if current_humidity > max_humidity:
             max_humidity = current_humidity
-        if min_humidity < current_humidity:
+        if current_humidity < min_humidity:
             min_humidity = current_humidity
 
         # Prepare the display
